@@ -48,3 +48,21 @@ def get_me(access_token):
     return r.json()
   else:
     return "{0}: {1}".format(r.status_code, r.text)
+
+def get_my_messages(access_token):
+  get_messages_url = graph_endpoint.format('/me/mailfolders/inbox/messages')
+
+  # Use OData query parameters to control the results
+  #  - Only first 10 results returned
+  #  - Only return the ReceivedDateTime, Subject, and From fields
+  #  - Sort the results by the ReceivedDateTime field in descending order
+  query_parameters = {'$top': '10',
+                      '$select': 'receivedDateTime,subject,from',
+                      '$orderby': 'receivedDateTime DESC'}
+
+  r = make_api_call('GET', get_messages_url, access_token, parameters = query_parameters)
+
+  if (r.status_code == requests.codes.ok):
+    return r.json()
+  else:
+    return "{0}: {1}".format(r.status_code, r.text)
