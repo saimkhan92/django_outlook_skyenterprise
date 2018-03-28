@@ -42,4 +42,6 @@ def mail(request):
     return HttpResponseRedirect(reverse('tutorial:home'))
   else:
     messages = get_my_messages(access_token)
-    return HttpResponse('Messages: {0}'.format(messages))
+    #return HttpResponse('Messages: {0}'.format(messages))
+    context = { 'messages': messages['value'] }
+    return render(request, 'tutorial/mail.html', context)
