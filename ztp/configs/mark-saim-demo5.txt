@@ -1,0 +1,12 @@
+set system services ssh protocol-version v2
+set system login user skyenterprise class super-user
+set system login user skyenterprise authentication encrypted-password $1$skyenter$MPIUULxz8lX5bc2GDoxrk.
+set system services outbound-ssh client skyenterprise-ncd01 device-id mark-saim-demo5-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd01 secret 39be9381b336069df5d9b9c3bad5d874
+set system services outbound-ssh client skyenterprise-ncd01 services netconf keep-alive retry 3 timeout 5
+set system services outbound-ssh client skyenterprise-ncd01 skyent-ncd01.juniper.net port 4087 timeout 60 retry 1000
+set system services outbound-ssh client skyenterprise-ncd02 device-id mark-saim-demo5-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd02 secret 39be9381b336069df5d9b9c3bad5d874
+set system services outbound-ssh client skyenterprise-ncd02 services netconf keep-alive retry 3 timeout 5
+set system services outbound-ssh client skyenterprise-ncd02 skyent-ncd02.juniper.net port 4087 timeout 60 retry 1000
+
