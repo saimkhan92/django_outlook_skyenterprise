@@ -33,7 +33,7 @@ def gettoken(request):
   request.session['refresh_token'] = refresh_token
   request.session['token_expires'] = expiration
   #return HttpResponse('User: {0}, Access token: {1}'.format(user['displayName'], access_token))
-  return HttpResponseRedirect(reverse('tutorial:mail'))
+  return HttpResponseRedirect(reverse('tutorial:download_mail'))                 #return HttpResponseRedirect(reverse('tutorial:saim_skyent_mail_body')) # add to urls.py also
 
 def mail(request):
   access_token = get_access_token(request, request.build_absolute_uri(reverse('tutorial:gettoken')))
@@ -42,6 +42,45 @@ def mail(request):
     return HttpResponseRedirect(reverse('tutorial:home'))
   else:
     messages = get_my_messages(access_token)
-    #return HttpResponse('Messages: {0}'.format(messages))
+    #print("id: "+ str(type(messages["value"][0]["id"])))
+    #print("body: "+ str(type(messages["value"][0]["body"]["content"])))
+    #return HttpResponse('Messages: {0}'.format(messages["value"][0]["body"]["content"]))
+
     context = { 'messages': messages['value'] }
+    return render(request, 'tutorial/mail.html', context)
+
+def download_mail(request):
+  access_token = get_access_token(request, request.build_absolute_uri(reverse('tutorial:gettoken')))
+  if not access_token:
+    return HttpResponseRedirect(reverse('tutorial:home'))
+  else:
+    messages = saim_get_top_messages(access_token)
+    #return HttpResponse('Messages: {0}'.format(messages))
+    #context = { 'messages': messages['value'] }
+    #return render(request, 'tutorial/mail.html', context)
+    #return HttpResponse('Messages: {0}'.format(message_bodies))
+    sky_ent_mail_id_list=[]
+    sky_ent_mail_body_list=[]
+    sky_ent_message_list=[]
+
+    for message in messages["value"]:
+      if message["subject"]=="Juniper Sky Enterprise: Successful device creation" and message["sender"]["emailAddress"]["address"]=="saimkhan@juniper.net":
+        sky_ent_mail_id_list.append(message["id"])
+        sky_ent_message_list.message["value"]
+        print(sky_ent_mail_id_list)
+
+    for id in sky_ent_mail_id_list:
+      body=saim_get_message_body(access_token,id)
+      sky_ent_mail_body_list.append(body)
+
+    counter=0
+    file_path="/Users/saimkhan/Desktop/juniper_work/dev/misc/emails"
+    for body in sky_ent_mail_body_list:
+      print(body["body"]["content"])
+      counter+=1
+      file_name="file_"+str(counter)+".txt"
+      with open(file_path+file_name,"w") as fh:
+        fh.write(body["body"]["content"])
+
+    context = { 'messages': sky_ent_message_list }
     return render(request, 'tutorial/mail.html', context)
