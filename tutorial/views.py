@@ -4,9 +4,10 @@ from django.urls import reverse
 from tutorial.authhelper import get_signin_url
 from tutorial.authhelper import get_signin_url, get_token_from_code, get_access_token
 from tutorial.outlookservice import get_me, get_my_messages, get_top_messages, get_message_body
+from ztp.extractconfig import extract_configuration
 import time
 import os
-import 
+#import re
 
 # Create your views here.
 
@@ -83,6 +84,8 @@ def download_mail(request):
       file_name="file_"+str(counter)+".html"
       with open(file_path+file_name,"w") as fh:
         fh.write(body["body"]["content"])
+
+    extract_configuration()
 
     context = { 'messages': sky_ent_message_list }
     return render(request, 'tutorial/mail.html', context)
