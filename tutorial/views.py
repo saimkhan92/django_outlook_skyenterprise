@@ -3,8 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from tutorial.authhelper import get_signin_url
 from tutorial.authhelper import get_signin_url, get_token_from_code, get_access_token
-from tutorial.outlookservice import get_me, get_my_messages
+from tutorial.outlookservice import get_me, get_my_messages, get_top_messages, get_message_body
 import time
+import os
+import 
 
 # Create your views here.
 
@@ -54,7 +56,7 @@ def download_mail(request):
   if not access_token:
     return HttpResponseRedirect(reverse('tutorial:home'))
   else:
-    messages = saim_get_top_messages(access_token)
+    messages = get_top_messages(access_token)
     #return HttpResponse('Messages: {0}'.format(messages))
     #context = { 'messages': messages['value'] }
     #return render(request, 'tutorial/mail.html', context)
@@ -64,21 +66,21 @@ def download_mail(request):
     sky_ent_message_list=[]
 
     for message in messages["value"]:
-      if message["subject"]=="Juniper Sky Enterprise: Successful device creation" and message["sender"]["emailAddress"]["address"]=="saimkhan@juniper.net":
+      if message["subject"]=="Juniper Sky Enterprise: Successful device creation" and message["from"]["emailAddress"]["address"]=="saimkhan@juniper.net":
         sky_ent_mail_id_list.append(message["id"])
-        sky_ent_message_list.message["value"]
-        print(sky_ent_mail_id_list)
+        sky_ent_message_list.append(message)
+    #print(sky_ent_mail_id_list)
 
     for id in sky_ent_mail_id_list:
-      body=saim_get_message_body(access_token,id)
+      body=get_message_body(access_token,id)
       sky_ent_mail_body_list.append(body)
 
     counter=0
-    file_path="/Users/saimkhan/Desktop/juniper_work/dev/misc/emails"
+    file_path=os.getcwd()+"/ztp/emails/"
     for body in sky_ent_mail_body_list:
-      print(body["body"]["content"])
+      #print(body["body"]["content"])
       counter+=1
-      file_name="file_"+str(counter)+".txt"
+      file_name="file_"+str(counter)+".html"
       with open(file_path+file_name,"w") as fh:
         fh.write(body["body"]["content"])
 

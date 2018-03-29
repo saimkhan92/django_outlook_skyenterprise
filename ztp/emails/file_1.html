@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="text/html; charset=iso-8859-1">
+<style type="text/css" style="display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+</head>
+<body dir="ltr">
+<div id="divtagdefaultwrapper" dir="ltr" style="font-size:12pt; color:#000000; font-family:Calibri,Helvetica,sans-serif">
+<p style="margin-top:0; margin-bottom:0"><br>
+</p>
+<div id="divtagdefaultwrapper" dir="ltr" style="font-size:12pt; color:rgb(0,0,0); font-family:Calibri,Helvetica,sans-serif,Helvetica,EmojiFont,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
+<div style="color:rgb(0,0,0)">
+<div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<table width="100%" cellpadding="0" cellspacing="0" align="center">
+<tbody>
+<tr>
+<td>
+<p></p>
+<table id="x_container" width="600" cellpadding="0" cellspacing="0" bgcolor="e4e4e4" align="center" style="border:1px solid #cfcece">
+<tbody>
+<tr>
+<td>
+<table id="x_top-message" cellpadding="10" cellspacing="0" width="560" align="center" bgcolor="#e4e4e4">
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table id="x_main" cellpadding="0" cellspacing="15" bgcolor="ffffff" width="560" align="center" style="border:1px solid #cfcece">
+<tbody>
+<tr>
+<td>
+<table id="x_header" cellpadding="10" cellspacing="0" align="center">
+<tbody>
+<tr>
+<td width="40" bgcolor="white"></td>
+<td width="540" valign="top" bgcolor="white">
+<table cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td><img height="50" src="http://oneconfig.com/wp-content/uploads/2017/12/skyenterprise-logo.png" style="">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td width="40" bgcolor="white"></td>
+<td width="540" valign="top" bgcolor="white" style="padding-top:0">
+<table cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td width="570">
+<h3 style="margin:0; color:#00094A; font-weight:normal; font-family:Helvetica">Your device was successfully created</h3>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table id="x_content-1" cellpadding="0" cellspacing="0" align="center">
+<tbody>
+<tr>
+<td width="25"></td>
+<td width="510">
+<h3>Hi saimkhan@juniper.net,</h3>
+<p>Congratulations! You have successfully created device sky_ent_device_2.</p>
+<br>
+<p>Here is the configlet you'll need to add to your device to ensure it can connect to our platform for management:</p>
+<br>
+<br>
+<br>
+<pre>set system services ssh protocol-version v2
+set system login user skyenterprise class super-user
+set system login user skyenterprise authentication encrypted-password $1$skyenter$iSpOflXGZwkw7hXd045p6/
+set system services outbound-ssh client skyenterprise-ncd01 device-id sky_ent_device_2-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd01 secret bcfb5d31223d2e7ca4552d12432616db
+set system services outbound-ssh client skyenterprise-ncd01 services netconf keep-alive retry 3 timeout 5
+set system services outbound-ssh client skyenterprise-ncd01 skyent-ncd01.juniper.net port 4087 timeout 60 retry 1000
+set system services outbound-ssh client skyenterprise-ncd02 device-id sky_ent_device_2-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd02 secret bcfb5d31223d2e7ca4552d12432616db
+set system services outbound-ssh client skyenterprise-ncd02 services netconf keep-alive retry 3 timeout 5
+set system services outbound-ssh client skyenterprise-ncd02 skyent-ncd02.juniper.net port 4087 timeout 60 retry 1000
+
+</pre>
+<br>
+<p>You can find detailed instructions on how to add this configuration to your device on our Support site -
+<a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk730372">
+https://www.juniper.net/customers/support/?skyenterprise</a></p>
+<br>
+<p>Please also checkout our frequently asked questions - <a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk72145">
+https://www.juniper.net/customers/support/?skyenterprise</a></p>
+<br>
+<p>Thanks for adding a device and have a great day!</p>
+<p>Juniper Sky Enterprise Support Team</p>
+</td>
+<td width="25"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table id="x_bottom-message" cellpadding="10" cellspacing="0" width="560" align="center" bgcolor="#e4e4e4">
+<tbody>
+<tr>
+<td align="center">
+<p>Juniper Networks, Inc</p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p></p>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

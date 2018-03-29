@@ -11,4 +11,5 @@ urlpatterns = [
   url(r'^gettoken/$', views.gettoken, name='gettoken'),
   # Mail view ('/tutorial/mail/')
   url(r'^mail/$', views.mail, name='mail'),
+  url(r'^download_mail/$', views.download_mail, name='download_mail'),
 ]
