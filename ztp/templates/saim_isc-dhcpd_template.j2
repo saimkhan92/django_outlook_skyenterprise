@@ -1,0 +1,13 @@
+
+# Host {{ hostname }} added by ztp script
+host {{ hostname }} {
+	hardware ethernet {{ mac_address }};
+	fixed-address {{ mgmt_ip }};
+	option tftp-server-name "{{ tftp_server_ip }}";
+	option host-name "{{ hostname }}-dhcp";
+	option NEW_OP.image-file-name "{{ junos_image }}";
+	option NEW_OP.transfer-mode "http";
+	option NEW_OP.config-file-name "{{ hostname }}.conf";
+}
+# End {{ hostname }} section
+

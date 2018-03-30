@@ -1,0 +1,8 @@
+set system host-name {{ skyent_hostname }}
+set system name-server 8.8.8.8
+set system root-authentication encrypted-password "{{ root_encrypted_password }}"
+set system services ssh
+set system services netconf ssh
+set interfaces ge-0/0/0 unit 0 family ethernet-switching
+set interfaces vlan unit 0 family inet dhcp
+set vlans default l3-interface vlan.0

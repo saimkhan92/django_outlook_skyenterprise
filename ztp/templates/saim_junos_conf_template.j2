@@ -1,0 +1,23 @@
+system {
+    host-name {{ hostname }};
+    name-server 8.8.8.8;
+    root-authentication {
+        encrypted-password "{{ root_encrypted_password }}"; ## Secret data
+    }
+    services {
+	ssh;
+	netconf {
+		ssh;
+	}
+    }
+}
+interfaces {
+    me0 {
+        unit 0 {
+            family inet {
+                address {{ mgmt_ip }}/{{ cidr_bits }};
+            }
+        }
+    }
+}
+
