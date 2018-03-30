@@ -1,0 +1,11 @@
+option domain-name "saimztp.org";
+default-lease-time 600;
+max-lease-time 7200;
+ddns-update-style none;
+
+option space NEW_OP;
+option NEW_OP.config-file-name code 1 = text;
+option NEW_OP.image-file-type code 2 = text;
+option NEW_OP.transfer-mode code 3 = text;
+option NEW_OP.alt-image-file-name code 4= text;
+option NEW_OP-encapsulation code 43 = encapsulate NEW_OP;
