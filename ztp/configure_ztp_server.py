@@ -1,6 +1,7 @@
 
 import csv
 import sys
+import paramiko
 from jinja2 import Template
 from subprocess import call
 import os
@@ -60,10 +61,34 @@ def copy_files():
     copyfile(final_dhcpd_conf_path,"/etc/dhcp/dhcpd.conf")
     dhcpd_return_code = call(dhcpd_restart_command, shell=True)
 
+def scp_files():
+    hostname="192.168.2.137"    #local ZTP VM
+    username="saimkhan"
+    password="310892"
+    port=22
+    t = paramiko.Transport((hostname, 22))
+    t.connect(username=username, password=password)
+    sftp = paramiko.SFTPClient.from_transport(t)
+
+    for filename in os.listdir("./ztp/temp"):
+        mypath="./ztp/temp/"+filename
+        if filename[-3:]=="txt":
+            print("txt transfer")
+            #os.chmod(mypath,0o777)
+            remotepath="/var/www/html/"+filename
+            sftp.put(mypath, remotepath)
+        elif filename[-4:]=="conf":
+            print("conf transfer")
+            #os.chmod(mypath,0o777)
+            remotepath="/etc/dhcp/dhcpd.conf"
+            sftp.put(mypath, remotepath)
+
 def main():
     print("")
     generate_final_config()
     generate_final_dhcpd_config()
+    #copy_files()
+    scp_files()
 
 if __name__=="__main__":
     main()
