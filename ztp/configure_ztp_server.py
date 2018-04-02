@@ -60,11 +60,6 @@ def copy_files():
     copyfile(final_dhcpd_conf_path,"/etc/dhcp/dhcpd.conf")
     dhcpd_return_code = call(dhcpd_restart_command, shell=True)
 
-# cp all contents of temp folder to apache http folder (one copy command)
-# render dhcpd.conf file pieces using base_template+csv file, add all the pieces togther
-# append the added pieces to base dhcpd.conf (containing all juniper options)
-# transfer the created file to /etc/dhcp/dhcpd.conf
-
 def main():
     print("")
     generate_final_config()
