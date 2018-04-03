@@ -5,9 +5,9 @@ from tutorial.authhelper import get_signin_url
 from tutorial.authhelper import get_signin_url, get_token_from_code, get_access_token
 from tutorial.outlookservice import get_me, get_my_messages, get_top_messages, get_message_body
 from ztp.extractconfig import extract_configuration
+from ztp.configure_ztp_server import generate_final_config,generate_final_dhcpd_config,copy_files,scp_files,clear_directory
 import time
 import os
-#import re
 
 # Create your views here.
 
@@ -53,6 +53,7 @@ def mail(request):
     return render(request, 'tutorial/mail.html', context)
 
 def download_mail(request):
+  clear_directory()
   access_token = get_access_token(request, request.build_absolute_uri(reverse('tutorial:gettoken')))
   if not access_token:
     return HttpResponseRedirect(reverse('tutorial:home'))
@@ -86,6 +87,9 @@ def download_mail(request):
         fh.write(body["body"]["content"])
 
     extract_configuration()
+    generate_final_config()
+    generate_final_dhcpd_config()
+    scp_files()
 
     context = { 'messages': sky_ent_message_list }
     return render(request, 'tutorial/mail.html', context)

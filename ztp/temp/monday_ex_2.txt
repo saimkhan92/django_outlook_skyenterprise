@@ -1,0 +1,8 @@
+set system host-name monday_ex_2
+set system name-server 8.8.8.8
+set system root-authentication encrypted-password "$5$z.a9s02u$znU3AW6hABWEc5EzQepIgYSoe8sNn.epGvw1uiUCsuC"
+set system services ssh
+set system services netconf ssh
+set interfaces ge-0/0/0 unit 0 family ethernet-switching
+set interfaces vlan unit 0 family inet dhcp
+set vlans default l3-interface vlan.0

@@ -1,8 +1,8 @@
 
-
 # Host {{ skyent_hostname }} added by ztp script
 host {{ skyent_hostname }} {
 	hardware ethernet {{ interface_mac }};
+	fixed-address {{ mgmt_ip }};
 	option tftp-server-name "{{ tftp_server_ip }}";
 	option NEW_OP.transfer-mode "http";
 	option NEW_OP.config-file-name "{{ skyent_hostname }}.txt";

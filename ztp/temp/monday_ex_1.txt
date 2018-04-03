@@ -1,19 +1,19 @@
-set system host-name sky_ent_device_1
+set system host-name monday_ex_1
 set system name-server 8.8.8.8
-set system root-authentication encrypted-password "!!!password1!!!"
+set system root-authentication encrypted-password "$5$z.a9s02u$znU3AW6hABWEc5EzQepIgYSoe8sNn.epGvw1uiUCsuC"
 set system services ssh
 set system services netconf ssh
 set interfaces ge-0/0/0 unit 0 family ethernet-switching
 set interfaces vlan unit 0 family inet dhcp
 set vlans default l3-interface vlan.0set system services ssh protocol-version v2
 set system login user skyenterprise class super-user
-set system login user skyenterprise authentication encrypted-password $1$skyenter$cD4wEC.w/VBYqcbnrpApK1
-set system services outbound-ssh client skyenterprise-ncd01 device-id sky_ent_device_1-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd01 secret e39587bade5b05c7120db80f465c900a
+set system login user skyenterprise authentication encrypted-password $1$skyenter$Tf6rk9KLINvo/jnXShqUH.
+set system services outbound-ssh client skyenterprise-ncd01 device-id monday_ex_1-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd01 secret 703b7d9910500438350a5f527b24a94f
 set system services outbound-ssh client skyenterprise-ncd01 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd01 skyent-ncd01.juniper.net port 4087 timeout 60 retry 1000
-set system services outbound-ssh client skyenterprise-ncd02 device-id sky_ent_device_1-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd02 secret e39587bade5b05c7120db80f465c900a
+set system services outbound-ssh client skyenterprise-ncd02 device-id monday_ex_1-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd02 secret 703b7d9910500438350a5f527b24a94f
 set system services outbound-ssh client skyenterprise-ncd02 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd02 skyent-ncd02.juniper.net port 4087 timeout 60 retry 1000
 

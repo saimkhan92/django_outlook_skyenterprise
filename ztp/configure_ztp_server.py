@@ -41,6 +41,7 @@ def generate_final_dhcpd_config():
 
     with open(os.getcwd()+"/ztp/templates/isc-dhcpd_template.j2","r") as fh1:
         dhcpd_template_text=fh1.read()
+        print(dhcpd_template_text)
     dhcpd_template=Template(dhcpd_template_text)
 
     with open(base_dhcp_conf_path,"r") as fh2:
@@ -49,8 +50,10 @@ def generate_final_dhcpd_config():
             fh3.write(dhcp_base_text)
 
     for row in csv_list_of_dicts:
+        print (row)
         with open(final_dhcpd_conf_path,"a") as fh4:
             dhcp_device_entry=dhcpd_template.render(row)
+            print(dhcp_device_entry)
             fh4.write(dhcp_device_entry)
 
 def copy_files():
@@ -83,12 +86,19 @@ def scp_files():
             remotepath="/etc/dhcp/dhcpd.conf"
             sftp.put(mypath, remotepath)
 
+def clear_directory():
+    deletion_dir_list=["./ztp/configs","./ztp/emails","./ztp/temp"]
+    for dir in deletion_dir_list:
+        files=os.listdir(dir)
+        for file in files:
+            os.remove(dir+"/"+file)
+
 def main():
     print("")
-    generate_final_config()
-    generate_final_dhcpd_config()
+    #generate_final_config()
+    #generate_final_dhcpd_config()
     #copy_files()
-    scp_files()
+    #scp_files()
 
 if __name__=="__main__":
     main()
