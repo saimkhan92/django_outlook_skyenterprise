@@ -6,6 +6,7 @@ from jinja2 import Template
 from subprocess import call
 import os
 from shutil import copyfile
+import re
 
 def generate_final_config():
     # Note: Junos image files and configuration files reside in the default apache2 directory /var/www/html
@@ -75,16 +76,43 @@ def scp_files():
 
     for filename in os.listdir("./ztp/temp"):
         mypath="./ztp/temp/"+filename
-        if filename[-3:]=="txt":
-            print("txt transfer")
-            #os.chmod(mypath,0o777)
-            remotepath="/var/www/html/"+filename
-            sftp.put(mypath, remotepath)
-        elif filename[-4:]=="conf":
+        if  filename=="dhcpd.conf":
             print("conf transfer")
             #os.chmod(mypath,0o777)
             remotepath="/etc/dhcp/dhcpd.conf"
             sftp.put(mypath, remotepath)
+        elif filename[-4:]=="conf":
+            print("txt transfer")
+            #os.chmod(mypath,0o777)
+            remotepath="/var/www/html/"+filename
+            sftp.put(mypath, remotepath)
+
+def set_to_text_config():
+    csv_file_path=os.getcwd()+"/ztp/host_to_mac_mapping.csv"
+    csv_list_of_dicts = csv.DictReader(open(csv_file_path))
+    set_config_dir="./ztp/configs"
+    variable_dict={}
+
+    with open(os.getcwd()+"/ztp/templates/junos_base_text_config.j2","r") as fh1:
+        text_template_content=fh1.read()
+    text_template=Template(text_template_content)
+
+    for row in csv_list_of_dicts:
+        with open("./ztp/temp/"+row["skyent_hostname"]+".txt","r") as fh:
+            set_file_text=fh.read()
+            variable_dict["hostname"] = (re.search('set system host-name (.*)', set_file_text))[1]
+            variable_dict["nameserver"] = (re.search('set system name-server (.*)', set_file_text))[1]
+            variable_dict["encrypted_pwd"] = (re.search('set system root-authentication encrypted-password "(.*)"', set_file_text))[1]
+            variable_dict["skyent_pwd"] = (re.search('set system login user skyenterprise authentication encrypted-password (.*)', set_file_text))[1]
+            variable_dict["ncd01_device_id"] = (re.search('set system services outbound-ssh client skyenterprise-ncd01 device-id (.*)', set_file_text))[1]
+            variable_dict["ncd01_secret"] = (re.search('set system services outbound-ssh client skyenterprise-ncd01 secret (.*)', set_file_text))[1]
+            variable_dict["ncd02_device_id"] = (re.search('set system services outbound-ssh client skyenterprise-ncd02 device-id (.*)', set_file_text))[1]
+            variable_dict["ncd02_secret"] = (re.search('set system services outbound-ssh client skyenterprise-ncd02 secret (.*)', set_file_text))[1]
+            print(variable_dict)
+            #print(os.getcwd()+"/ztp/temp/"+file[-4:]+".conf")
+            with open(os.getcwd()+"/ztp/temp/"+row["skyent_hostname"]+".conf","w") as fh2:
+                #print(text_template.render(variable_dict))
+                fh2.write(text_template.render(variable_dict))
 
 def clear_directory():
     deletion_dir_list=["./ztp/configs","./ztp/emails","./ztp/temp"]

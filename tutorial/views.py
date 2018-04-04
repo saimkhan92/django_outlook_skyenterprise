@@ -5,7 +5,7 @@ from tutorial.authhelper import get_signin_url
 from tutorial.authhelper import get_signin_url, get_token_from_code, get_access_token
 from tutorial.outlookservice import get_me, get_my_messages, get_top_messages, get_message_body
 from ztp.extractconfig import extract_configuration
-from ztp.configure_ztp_server import generate_final_config,generate_final_dhcpd_config,copy_files,scp_files,clear_directory
+from ztp.configure_ztp_server import generate_final_config,generate_final_dhcpd_config,copy_files,scp_files,clear_directory,set_to_text_config
 import time
 import os
 
@@ -89,6 +89,7 @@ def download_mail(request):
     extract_configuration()
     generate_final_config()
     generate_final_dhcpd_config()
+    set_to_text_config()
     scp_files()
 
     context = { 'messages': sky_ent_message_list }

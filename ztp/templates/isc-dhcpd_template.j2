@@ -5,6 +5,6 @@ host {{ skyent_hostname }} {
 	fixed-address {{ mgmt_ip }};
 	option tftp-server-name "{{ tftp_server_ip }}";
 	option NEW_OP.transfer-mode "http";
-	option NEW_OP.config-file-name "{{ skyent_hostname }}.txt";
+	option NEW_OP.config-file-name "{{ skyent_hostname }}.conf";
 }
 # End {{ skyent_hostname }} section
