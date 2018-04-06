@@ -1,3 +1,4 @@
+
 set system services ssh protocol-version v2
 set system login user skyenterprise class super-user
 set system login user skyenterprise authentication encrypted-password $1$skyenter$iSpOflXGZwkw7hXd045p6/

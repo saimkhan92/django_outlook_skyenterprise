@@ -1,4 +1,3 @@
-
 import csv
 import sys
 import paramiko
@@ -66,7 +65,7 @@ def copy_files():
     dhcpd_return_code = call(dhcpd_restart_command, shell=True)
 
 def scp_files():
-    hostname="192.168.2.137"    #local ZTP VM
+    hostname="10.2.128.3"    #local ZTP VM
     username="saimkhan"
     password="310892"
     port=22
@@ -77,15 +76,28 @@ def scp_files():
     for filename in os.listdir("./ztp/temp"):
         mypath="./ztp/temp/"+filename
         if  filename=="dhcpd.conf":
-            print("conf transfer")
+            print("dhcpd file transfer")
             #os.chmod(mypath,0o777)
             remotepath="/etc/dhcp/dhcpd.conf"
             sftp.put(mypath, remotepath)
         elif filename[-4:]=="conf":
-            print("txt transfer")
+            print("conf transfer")
             #os.chmod(mypath,0o777)
             remotepath="/var/www/html/"+filename
             sftp.put(mypath, remotepath)
+
+    #### Added to include a workaround testing
+    for filename in os.listdir("./ztp/temp"):
+        mypath="./ztp/temp/"+filename
+        if  filename=="dhcpd.conf":
+            continue
+        elif filename[-3:]=="txt":
+            print("txt transfer")
+            #os.chmod(mypath,0o777)
+            remotepath="/var/tmp/"+filename
+            sftp.put(mypath, remotepath)
+    sftp.put("./ztp/host_to_mac_mapping.csv", "/var/tmp/host_to_mac_mapping.csv")
+    t.close()
 
 def set_to_text_config():
     csv_file_path=os.getcwd()+"/ztp/host_to_mac_mapping.csv"

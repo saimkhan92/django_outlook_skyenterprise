@@ -21,6 +21,7 @@ def extract_configuration():
 				hostname=match2[1]
 				print(hostname)
 				with open(config_directory+hostname+".txt","w") as fh2:
+					fh2.write("\n")
 					fh2.write(config)
 		except:
 			continue

@@ -1,2 +1,2 @@
 skyent_hostname,interface_mac,serial_num,root_encrypted_password,tftp_server_ip,mgmt_ip
-monday_ex_1,40:b4:f0:7a:96:bf,CU0212399357,$5$z.a9s02u$znU3AW6hABWEc5EzQepIgYSoe8sNn.epGvw1uiUCsuC,192.168.1.101,192.168.1.202
+friday_ex,40:b4:f0:7a:96:bf,CU0212399357,$5$z.a9s02u$znU3AW6hABWEc5EzQepIgYSoe8sNn.epGvw1uiUCsuC,192.168.1.101,192.168.1.202
