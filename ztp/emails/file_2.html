@@ -12,9 +12,12 @@ p
 </head>
 <body dir="ltr">
 <div id="divtagdefaultwrapper" dir="ltr" style="font-size:12pt; color:#000000; font-family:Calibri,Helvetica,sans-serif">
-<p style="margin-top:0; margin-bottom:0"><span style="font-size:12pt">&nbsp;</span><br>
+<p style="margin-top:0; margin-bottom:0"><br>
 </p>
 <div style="color:rgb(0,0,0)">
+<div id="divRplyFwdMsg" dir="ltr">
+<div></div>
+</div>
 <div>
 <p></p>
 <p></p>
@@ -81,7 +84,7 @@ p
 <td width="25"></td>
 <td width="510">
 <h3>Hi saimkhan@juniper.net,</h3>
-<p>Congratulations! You have successfully created device thursday_ex.</p>
+<p>Congratulations! You have successfully created device saturday_ex.</p>
 <br>
 <p>Here is the configlet you'll need to add to your device to ensure it can connect to our platform for management:</p>
 <br>
@@ -89,23 +92,23 @@ p
 <br>
 <pre>set system services ssh protocol-version v2
 set system login user skyenterprise class super-user
-set system login user skyenterprise authentication encrypted-password $1$skyenter$7yZ1HxhP3ELb0XwV4auEA0
-set system services outbound-ssh client skyenterprise-ncd01 device-id thursday_ex-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd01 secret 7d28c175da4ac9365c79b77e054c8e6c
+set system login user skyenterprise authentication encrypted-password $1$skyenter$gdAaK77HXlLMmpNcKKTbq/
+set system services outbound-ssh client skyenterprise-ncd01 device-id saturday_ex-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd01 secret ca2378df590f8bc70ee3440c964b7a52
 set system services outbound-ssh client skyenterprise-ncd01 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd01 skyent-ncd01.juniper.net port 4087 timeout 60 retry 1000
-set system services outbound-ssh client skyenterprise-ncd02 device-id thursday_ex-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd02 secret 7d28c175da4ac9365c79b77e054c8e6c
+set system services outbound-ssh client skyenterprise-ncd02 device-id saturday_ex-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd02 secret ca2378df590f8bc70ee3440c964b7a52
 set system services outbound-ssh client skyenterprise-ncd02 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd02 skyent-ncd02.juniper.net port 4087 timeout 60 retry 1000
 
 </pre>
 <br>
 <p>You can find detailed instructions on how to add this configuration to your device on our Support site -
-<a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk797170">
+<a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk59858">
 https://www.juniper.net/customers/support/?skyenterprise</a></p>
 <br>
-<p>Please also checkout our frequently asked questions - <a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk592195">
+<p>Please also checkout our frequently asked questions - <a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk200469">
 https://www.juniper.net/customers/support/?skyenterprise</a></p>
 <br>
 <p>Thanks for adding a device and have a great day!</p>

@@ -65,7 +65,7 @@ def copy_files():
     dhcpd_return_code = call(dhcpd_restart_command, shell=True)
 
 def scp_files():
-    hostname="10.2.128.3"    #local ZTP VM
+    hostname="10.2.128.4"    #local ZTP VM
     username="saimkhan"
     password="310892"
     port=22

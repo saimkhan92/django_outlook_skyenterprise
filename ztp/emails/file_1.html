@@ -84,7 +84,7 @@ p
 <td width="25"></td>
 <td width="510">
 <h3>Hi saimkhan@juniper.net,</h3>
-<p>Congratulations! You have successfully created device friday_ex.</p>
+<p>Congratulations! You have successfully created device sunday_ex.</p>
 <br>
 <p>Here is the configlet you'll need to add to your device to ensure it can connect to our platform for management:</p>
 <br>
@@ -92,23 +92,23 @@ p
 <br>
 <pre>set system services ssh protocol-version v2
 set system login user skyenterprise class super-user
-set system login user skyenterprise authentication encrypted-password $1$skyenter$hlC8pY6az5BWkkAbmARjd/
-set system services outbound-ssh client skyenterprise-ncd01 device-id friday_ex-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd01 secret c071cf05517055d231e8cafbfadc64c5
+set system login user skyenterprise authentication encrypted-password $1$skyenter$vboJsJ94Bq5BipNt5Gsaw0
+set system services outbound-ssh client skyenterprise-ncd01 device-id sunday_ex-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd01 secret c674d19483cc21544c4e30f9e26b8113
 set system services outbound-ssh client skyenterprise-ncd01 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd01 skyent-ncd01.juniper.net port 4087 timeout 60 retry 1000
-set system services outbound-ssh client skyenterprise-ncd02 device-id friday_ex-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd02 secret c071cf05517055d231e8cafbfadc64c5
+set system services outbound-ssh client skyenterprise-ncd02 device-id sunday_ex-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd02 secret c674d19483cc21544c4e30f9e26b8113
 set system services outbound-ssh client skyenterprise-ncd02 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd02 skyent-ncd02.juniper.net port 4087 timeout 60 retry 1000
 
 </pre>
 <br>
 <p>You can find detailed instructions on how to add this configuration to your device on our Support site -
-<a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk604277">
+<a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk65746">
 https://www.juniper.net/customers/support/?skyenterprise</a></p>
 <br>
-<p>Please also checkout our frequently asked questions - <a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk305627">
+<p>Please also checkout our frequently asked questions - <a href="https://www.juniper.net/customers/support/?skyenterprise" id="LPlnk543772">
 https://www.juniper.net/customers/support/?skyenterprise</a></p>
 <br>
 <p>Thanks for adding a device and have a great day!</p>

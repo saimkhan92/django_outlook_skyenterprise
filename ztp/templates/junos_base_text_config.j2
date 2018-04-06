@@ -22,36 +22,6 @@ system {
         netconf {
             ssh;
         }
-        outbound-ssh {
-            client skyenterprise-ncd01 {
-                device-id {{ ncd01_device_id }};
-                secret "{{ ncd01_secret }}"; ## SECRET-DATA
-                keep-alive {
-                    retry 3;
-                    timeout 5;
-                }
-                services netconf;
-                skyent-ncd01.juniper.net {
-                    port 4087;
-                    retry 1000;
-                    timeout 60;
-                }
-            }
-            client skyenterprise-ncd02 {
-                device-id {{ ncd02_device_id }};
-                secret "{{ ncd02_secret }}"; ## SECRET-DATA
-                keep-alive {
-                    retry 3;
-                    timeout 5;
-                }
-                services netconf;
-                skyent-ncd02.juniper.net {
-                    port 4087;
-                    retry 1000;
-                    timeout 60;
-                }
-            }
-        }
         dhcp {
             traceoptions {
                 file dhcp_logfile;
@@ -72,9 +42,6 @@ system {
             interactive-commands any;
         }
     }
-}
-chassis {
-    auto-image-upgrade;
 }
 interfaces {
     ge-0/0/0 {

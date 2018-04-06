@@ -1,4 +1,4 @@
-set system host-name friday_ex
+set system host-name sunday_ex
 set system name-server 8.8.8.8
 set system root-authentication encrypted-password "$5$z.a9s02u$znU3AW6hABWEc5EzQepIgYSoe8sNn.epGvw1uiUCsuC"
 set system services ssh
@@ -8,13 +8,13 @@ set interfaces vlan unit 0 family inet dhcp
 set vlans default l3-interface vlan.0
 set system services ssh protocol-version v2
 set system login user skyenterprise class super-user
-set system login user skyenterprise authentication encrypted-password $1$skyenter$hlC8pY6az5BWkkAbmARjd/
-set system services outbound-ssh client skyenterprise-ncd01 device-id friday_ex-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd01 secret c071cf05517055d231e8cafbfadc64c5
+set system login user skyenterprise authentication encrypted-password $1$skyenter$vboJsJ94Bq5BipNt5Gsaw0
+set system services outbound-ssh client skyenterprise-ncd01 device-id sunday_ex-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd01 secret c674d19483cc21544c4e30f9e26b8113
 set system services outbound-ssh client skyenterprise-ncd01 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd01 skyent-ncd01.juniper.net port 4087 timeout 60 retry 1000
-set system services outbound-ssh client skyenterprise-ncd02 device-id friday_ex-jnprsaimkhan
-set system services outbound-ssh client skyenterprise-ncd02 secret c071cf05517055d231e8cafbfadc64c5
+set system services outbound-ssh client skyenterprise-ncd02 device-id sunday_ex-jnprsaimkhan
+set system services outbound-ssh client skyenterprise-ncd02 secret c674d19483cc21544c4e30f9e26b8113
 set system services outbound-ssh client skyenterprise-ncd02 services netconf keep-alive retry 3 timeout 5
 set system services outbound-ssh client skyenterprise-ncd02 skyent-ncd02.juniper.net port 4087 timeout 60 retry 1000
 
